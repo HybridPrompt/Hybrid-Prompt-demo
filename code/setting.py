@@ -1,0 +1,12 @@
+set_gen_model = "gpt-3.5-turbo"
+set_vote_model = "gpt-3.5-turbo"
+gen_temperature = 0.7
+vote_temperature = 0.7
+prompt_gen_num = 3
+sel_candidate_num = 1
+max_gen_token = 4000
+max_vote_token = 1000
+user_id = "XXX"
+pass_word = "XXX"
+api_url = "https://www.hustgpt.com/api/openaiApi"
+ori_api_url = "https://www.hustgpt.com/api/OriginAPI"
